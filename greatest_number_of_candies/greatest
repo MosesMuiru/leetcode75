@@ -1,0 +1,29 @@
+package main
+
+import (
+	"fmt"
+	"slices"
+)
+
+func GreatestCandies(candies []int, extracandies int) []bool {
+	output := make([]bool, len(candies))
+	totalCandies := make([]int, len(candies))
+
+	for j := range len(candies) {
+		totalCandies[j] = candies[j] + extracandies
+	}
+
+	maxNumber := slices.Max(totalCandies)
+	var maxIndex int
+
+	for i := range totalCandies {
+		if totalCandies[i] == maxNumber {
+			maxIndex = i
+		}
+	}
+
+	output[maxIndex] = true
+	fmt.Println("this is the output", output)
+
+	return output
+}
